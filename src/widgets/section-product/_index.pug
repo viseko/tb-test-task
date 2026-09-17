@@ -55,43 +55,43 @@ mixin section-product(data = {})
                 +icon("search", 80, 80)
 
           .product-card__info
-            .product-card__price
-              span.product-card__price-current(data-role="price") 326,40 ₽
-              span.product-card__price-old(data-role="old-price") 349,20 ₽
-              span.product-card__price-discount(data-role="discount") -7%
+            .product-card__packaging
+              .product-card__packaging-label Фасовка
+              .product-card__packaging-list
+                +packaging-item({
+                  value: "100 г",
+                  vendor: "01306",
+                  price: 326.4,
+                  oldPrice: 349.2,
+                  stock: "lot",
+                  checked: true,
+                })
+                +packaging-item({
+                  value: "500 г",
+                  vendor: "01307",
+                  price: 1432,
+                  oldPrice: 1646,
+                  stock: "lot",
+                })
+                +packaging-item({
+                  value: "1000 г",
+                  vendor: "01308",
+                  price: 2064,
+                  oldPrice: 2592,
+                  stock: "few",
+                })
+                +packaging-item({
+                  value: "5000 г",
+                  vendor: "01309",
+                  price: 6320,
+                  oldPrice: 8710,
+                  stock: "few",
+                })
             .product-card__purchase
-              .product-card__packaging
-                .product-card__packaging-label Фасовка
-                .product-card__packaging-list
-                  +packaging-item({
-                    value: "100 г",
-                    vendor: "01306",
-                    price: 326.4,
-                    oldPrice: 349.2,
-                    stock: "lot",
-                    checked: true,
-                  })
-                  +packaging-item({
-                    value: "500 г",
-                    vendor: "01307",
-                    price: 1432,
-                    oldPrice: 1646,
-                    stock: "lot",
-                  })
-                  +packaging-item({
-                    value: "1000 г",
-                    vendor: "01308",
-                    price: 2064,
-                    oldPrice: 2592,
-                    stock: "few",
-                  })
-                  +packaging-item({
-                    value: "5000 г",
-                    vendor: "01309",
-                    price: 6320,
-                    oldPrice: 8710,
-                    stock: "few",
-                  })
+              .product-card__price
+                span.product-card__price-current(data-role="price") 326,40 ₽
+                span.product-card__price-old(data-role="old-price") 349,20 ₽
+                span.product-card__price-discount(data-role="discount") -7%
               +btn({
                 className: "product-card__to-cart",
                 type: "button",

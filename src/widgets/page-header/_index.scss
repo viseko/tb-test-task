@@ -58,24 +58,26 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    color: var(--cl-text);
-    background-color: var(--cl-bg);
-    border: 1px solid var(--cl-border);
+    color: var(--cl-bg);
+    background-color: var(--cl-text);
     border-radius: 50%;
-    transition: background-color 0.3s, transform 0.1s;
-
-    &:hover {
-      background-color: var(--cl-accent);
-      border-color: var(--cl-accent);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    transition:
+      color 0.3s,
+      background-color 0.3s,
+      transform 0.1s;
 
     svg {
       width: 16px;
       height: 16px;
+    }
+
+    &:hover {
+      color: var(--cl-text);
+      background-color: var(--cl-accent);
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
 
@@ -92,7 +94,9 @@
       color: var(--cl-text-secondary);
       font-weight: 600;
       white-space: nowrap;
-      transition: color 0.3s, transform 0.1s;
+      transition:
+        color 0.3s,
+        transform 0.1s;
       will-change: transform;
 
       &:hover {
@@ -106,6 +110,5 @@
   }
 
   &__search {
-
   }
 }

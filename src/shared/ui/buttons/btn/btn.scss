@@ -1,0 +1,83 @@
+.btn {
+  // размеры
+  --gap: 4px;
+  --height: 45px;
+  --padding-x: 24px;
+  --padding: calc((var(--height) - var(--line-height)) / 2 - 1px) var(--padding-x)
+    calc((var(--height) - var(--line-height)) / 2 + 1px);
+
+  // текст
+  --font-size: 14px;
+  --font-weight: 600;
+  --line-height: 24px;
+
+  // цвета
+  --color: var(--cl-bg);
+  --hover-color: var(--cl-bg);
+  --bg-color: var(--cl-green);
+  --hover-bg-color: var(--cl-green-dark);
+
+  // оформление
+  --border: 0;
+  --border-radius: var(--radius-sm);
+  --box-shadow: none;
+  --box-shadow-hover: none;
+
+  display: inline-flex;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding);
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  white-space: nowrap;
+  background-color: var(--bg-color);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition:
+    color 0.3s,
+    background-color 0.3s,
+    transform 0.1s;
+  user-select: none;
+  will-change: transform;
+
+  &:disabled,
+  &._disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+  }
+
+  &--theme--ghost {
+    --bg-color: transparent;
+    --hover-bg-color: transparent;
+    --color: var(--cl-green);
+    --hover-color: var(--cl-green-dark);
+    --padding-x: 0;
+  }
+}
+
+a.btn,
+button.btn:not(:disabled) {
+  &:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+a.btn {
+  text-decoration: none;
+}

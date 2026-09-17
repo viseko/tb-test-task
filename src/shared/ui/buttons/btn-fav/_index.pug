@@ -1,0 +1,16 @@
+mixin btn-fav(data = {})
+  //- Назавние компонента
+  //- className?: string = null
+  //- id?: string
+  //- theme?: string
+  //- size?: string
+  //- role?: string = null
+  button.btn-fav(
+    id=data.id,
+    class=data.className,
+    class=(data.theme ? `btn-fav--theme--${data.theme}` : null),
+    class=(data.size ? `btn-fav--size--${data.size}` : null),
+    data-role=data.role,
+    data-tooltip="Добавить в избранное"
+  )
+    +icon("heart", 16, 16)

@@ -18,6 +18,15 @@
   --cl-bg: #fff; // Фон. цвет страницы
   --cl-bg-ivory: #fefcef; // Айвори-фон (баннеры, мини-корзина)
   --cl-bg-secondary: #f6f7f8;
+  --cl-green: #80bc14;
+  --cl-green-dark: #628f10;
+  --cl-success: #22af10;
+  --cl-success-shadow: #{rgba(#22af10, 15%)};
+  --cl-error: #d64545;
+  --cl-error-shadow: #{rgba(#d64545, 15%)};
+  --cl-none: #999;
+  --cl-none-shadow: #{rgba(#999, 15%)};
+  --cl-green-light: #e9f2c3;
 
   // * акцент
   --cl-accent: #f5d730; // Основной жёлтый акцент (кнопки, активные состояния)

@@ -39,6 +39,10 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       assetsDir: "assets",
       polyfillModulePreload: false,
+      // main.ts и main.scss — два отдельных rollup-входа, оба маппятся в один "main.min.css"
+      // через assetFileNames ниже; без этого CSS, импортированный из TS (напр. fancybox.css),
+      // попадает в отдельный чанк, который никак не подключён в index.html.
+      cssCodeSplit: false,
       rollupOptions: {
         input: {
           main: resolve(__dirname, "src/main.ts"),
@@ -97,8 +101,8 @@ export default defineConfig(({ mode }) => {
                 ],
                 safelist: {
                   // Сохраняем динамические классы и состояния
-                  standard: [/^swiper/, /^is-/, /^has-/, /^active/, /^show/, /^hide/],
-                  deep: [/^swiper/, /^accordion/],
+                  standard: [/^swiper/, /^is-/, /^has-/, /^active/, /^show/, /^hide/, /^f-/, /^fancybox/],
+                  deep: [/^swiper/, /^accordion/, /^f-/, /^fancybox/],
                   // Модификаторы theme/size собираются в миксинах через шаблонные строки
                   // (`btn--theme--${data.theme}`, см. +btn/+btn-element/+breadcrumbs/+page-header),
                   // поэтому итоговое имя класса нигде не встречается в исходниках буквально —

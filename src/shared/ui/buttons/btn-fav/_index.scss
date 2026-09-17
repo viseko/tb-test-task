@@ -1,0 +1,26 @@
+.btn-fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--cl-text-secondary);
+  background-color: var(--cl-bg);
+  border: 1px solid var(--cl-border);
+  border-radius: 50%;
+  transition:
+    color 0.3s,
+    border-color 0.3s,
+    background-color 0.3s,
+    transform 0.1s;
+
+  &:hover {
+    color: var(--cl-bg);
+    background-color: var(--cl-green);
+    border-color: var(--cl-green);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

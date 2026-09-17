@@ -1,0 +1,27 @@
+mixin btn(data = {})
+  //- Кнопка
+  //- className?: string
+  //- theme?: "ghost"
+  //- id?: string
+  //- role?: string
+  //- text?: string
+  //- title?: string
+  //- href?: string
+  //- blank?: boolean
+  //- disabled?: boolean
+  //- to?: string
+  //- type: "button" | "submit" = "button"
+  //- noRipple?: boolean = true
+  +btn-element({
+    ...data,
+    baseClass: "btn",
+    attributes: {
+      ...(data.noRipple ? {} : { "data-ripple-effect": "" }),
+      ...(data.to && { "data-to": data.to }),
+      ...data.attributes,
+    },
+  })
+    if data.text
+      span!= data.text
+    else
+      block

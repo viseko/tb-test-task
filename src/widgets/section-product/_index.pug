@@ -18,13 +18,117 @@ mixin section-product(data = {})
           list: [
             ["Каталог", "#"],
             ["Улун", "#"],
+            ["Ароматизированный улун", "#"],
             ["Китайский ароматизированный улун", "#"],
             ["Китайский светлый ароматизированный улун", "#"],
             ["Ананасовый улун"],
           ],
         })
-        h1.section-product__title Ананасовый улун
-        block
+        -
+          function formatPrice(num) {
+            var formatted = num % 1 === 0
+              ? num.toLocaleString("ru-RU")
+              : num.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            return formatted + " ₽";
+          }
+
+          var stockLabels = {
+            lot: "В наличии: Много",
+            few: "В наличии: Мало",
+            none: "Нет в наличии",
+          };
+
+          var packagingItems = [
+            { value: "100 г", vendor: "01306", price: 326.4, oldPrice: 349.2, stock: "lot" },
+            { value: "500 г", vendor: "01307", price: 1432, oldPrice: 1646, stock: "lot" },
+            { value: "1000 г", vendor: "01308", price: 2064, oldPrice: 2592, stock: "few" },
+            { value: "5000 г", vendor: "01309", price: 6320, oldPrice: 8710, stock: "none" },
+          ].map(function (item) {
+            return {
+              value: item.value,
+              vendor: item.vendor,
+              price: formatPrice(item.price),
+              oldPrice: formatPrice(item.oldPrice),
+              discount: "-" + Math.round((1 - item.price / item.oldPrice) * 100) + "%",
+              stock: item.stock,
+              stockLabel: stockLabels[item.stock],
+            };
+          });
+
+        .product-card(data-product-card)
+          header.product-card__header
+            .product-card__header-top
+              a.product-card__category(href="#") Улун
+              +btn-fav
+            h1.product-card__title Ананасовый улун
+            .product-card__id
+              .product-card__vendor
+                span.product-card__vendor-title Артикул:
+                span.product-card__vendor-value(data-role="vendor")!= packagingItems[0].vendor
+              .product-card__stock(data-role="stock-indicator")
+                span(data-role="stock") В наличии: много
+          .product-card__gallery
+            a.product-card__image(
+              href=`${PATH.img}/product_full.jpg`,
+              data-fancybox="product-gallery",
+              data-caption="Ананасовый улун",
+              aria-label="Открыть фото товара крупным планом"
+            )
+              +img({
+                className: "product-card__image-img",
+                src: "product.jpg",
+                alt: "Ананасовый улун — листовой чай",
+                width: 560,
+                height: 560,
+                lazy: false,
+              })
+              span.product-card__zoom(aria-hidden="true")
+                +icon("search", 80, 80)
+
+          .product-card__info
+            .product-card__price
+              span.product-card__price-current(data-role="price")= packagingItems[0].price
+              span.product-card__price-old(data-role="old-price")= packagingItems[0].oldPrice
+              span.product-card__price-discount(data-role="discount")= packagingItems[0].discount
+            .product-card__purchase
+              .product-card__packaging
+                .product-card__packaging-label Фасовка
+                .product-card__packaging-list
+                  each item, index in packagingItems
+                    label.product-card__packaging-item
+                      input.product-card__packaging-input.visually-hidden(
+                        type="radio",
+                        name="packaging",
+                        checked=(index === 0),
+                        data-price=item.price,
+                        data-old-price=item.oldPrice,
+                        data-discount=item.discount,
+                        data-vendor=item.vendor,
+                        data-stock=item.stock,
+                        data-stock-label=item.stockLabel
+                      )
+                      span.product-card__packaging-value= item.value
+              +btn({
+                className: "product-card__to-cart",
+                type: "button",
+              })
+                +icon("cart", 20, 20)
+                span В корзину
+
+            .product-card__description
+              p Светлый Фуцзяньский улун с&nbsp;ароматом ананаса. В&nbsp;сухом виде&nbsp;&mdash; красивый крупный лист изумрудного цвета, скруткой листа напоминающий Те&nbsp;Гуань Инь.
+              p <strong>Состав:</strong> китайский бирюзовый чай, цукаты, натуральные ароматические масла.
+              p <strong>Цвет:</strong> Прозрачный, светло-янтарного цвета.
+              p <strong>Вкус:</strong> Классическая нота светлого фуцзяньского улуна переплетается c&nbsp;яркой ананасовой нотой.
+            .product-card__footer
+              +btn({
+                type: "button",
+                theme: "ghost",
+                href: "#",
+                noRipple: true,
+              })
+                +icon("chat", 16, 16)
+                span Оставить отзыв
       aside.section-product__sidebar
         nav.product-sidebar
           header.product-sidebar__header Категории

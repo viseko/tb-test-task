@@ -14,7 +14,7 @@ mixin breadcrumbs(data = {})
     )
       ul.breadcrumbs__list(class=data.className)
         li.breadcrumbs__item
-          a.breadcrumbs__link(href=data.homeUrl || BASE_URL) Начало
+          a.breadcrumbs__link(href=data.homeUrl || "/") Начало
         each item, index in data.list
           li.breadcrumbs__item
             if item.length === 2

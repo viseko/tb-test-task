@@ -6,11 +6,9 @@ import { buildServer, buildPlugins } from "./app/modules/_index";
 
 import purgecss from "@fullhuman/postcss-purgecss";
 
-const PROJECT_NAME = "vite-starter";
-
 export default defineConfig(({ mode }) => {
   const IS_DEV = mode === "development";
-  const BASE_URL = IS_DEV ? "" : `/${PROJECT_NAME}`;
+  const BASE_URL = ""; // сайт раздаётся с корня домена (Vercel)
 
   return {
     root: "src",

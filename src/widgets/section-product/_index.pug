@@ -14,6 +14,16 @@ mixin section-product(data = {})
   )
     .container.section-product__container
       .section-product__main
+        +breadcrumbs({
+          list: [
+            ["Каталог", "#"],
+            ["Улун", "#"],
+            ["Китайский ароматизированный улун", "#"],
+            ["Китайский светлый ароматизированный улун", "#"],
+            ["Ананасовый улун"],
+          ],
+        })
+        h1.section-product__title Ананасовый улун
         block
       aside.section-product__sidebar
         nav.product-sidebar

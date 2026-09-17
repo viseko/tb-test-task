@@ -1,0 +1,37 @@
+.breadcrumbs {
+  --divider: "-";
+  --gap: 4px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+
+  &__item {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+    font-size: 12px;
+    line-height: 100%;
+
+    &:not(:last-child)::after {
+      content: var(--divider);
+      color: var(--cl-text-secondary);
+    }
+  }
+
+  &__link {
+    color: var(--cl-text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--cl-text);
+    }
+  }
+
+  &__text {
+    color: var(--cl-text);
+  }
+}

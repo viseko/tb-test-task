@@ -1,0 +1,23 @@
+mixin breadcrumbs(data = {})
+  //- Хлебные крошки
+  //- list: array = []
+  //- theme?: string
+  //- size?: string
+  //- homeUrl?: string
+  if data.list && data.list.length > 0
+    nav.breadcrumbs(
+      class=data.className,
+      class=(data.theme ? `breadcrumbs--theme--${data.theme}` : null),
+      class=(data.size ? `breadcrumbs--size--${data.size}` : null),
+      data-role=data.role,
+      aria-label="breadcrumbs"
+    )
+      ul.breadcrumbs__list(class=data.className)
+        li.breadcrumbs__item
+          a.breadcrumbs__link(href=data.homeUrl || BASE_URL) Начало
+        each item, index in data.list
+          li.breadcrumbs__item
+            if item.length === 2
+              a.breadcrumbs__link(href=item[1])!= item[0]
+            else
+              span.breadcrumbs__text(aria-current="page")!= item[0]

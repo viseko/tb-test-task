@@ -17,15 +17,6 @@ html(lang="ru")
     meta(name="format-detection", content="telephone=no")
 
     //- Предзагрузки
-    //- * 1. Шрифты
-    link(
-      rel="preload",
-      href=`${PATH.fonts}/OpenSans.woff2`,
-      as="font",
-      type="font/woff2",
-      crossorigin
-    )
-    //- * 2. Стили
     if !IS_DEV
       link(rel="preload", href=`${BASE_URL}/assets/css/main.min.css?v=${TIMESTAMP}`, as="style")
 

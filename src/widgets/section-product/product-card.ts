@@ -8,6 +8,7 @@ export default class ProductCard {
   private readonly vendorElem: HTMLElement | null;
   private readonly stockElem: HTMLElement | null;
   private readonly stockValueElem: HTMLElement | null;
+  private readonly toCartElem: HTMLElement | null;
 
   constructor(elem: HTMLElement) {
     this.inputs = [...elem.querySelectorAll<HTMLInputElement>(".product-card__packaging-input")];
@@ -17,6 +18,7 @@ export default class ProductCard {
     this.vendorElem = elem.querySelector<HTMLElement>("[data-role='vendor']");
     this.stockElem = elem.querySelector<HTMLElement>("[data-role='stock-indicator']");
     this.stockValueElem = elem.querySelector<HTMLElement>("[data-role='stock']");
+    this.toCartElem = elem.querySelector<HTMLElement>("[data-role='to-cart']");
 
     this.inputs.forEach((input) => input.addEventListener("change", this.handleChange));
   }
@@ -47,6 +49,8 @@ export default class ProductCard {
       this.stockElem.classList.remove(...STOCK_MODIFIERS);
       if (stock && stock !== "lot") this.stockElem.classList.add(`_${stock}`);
     }
+
+    if (this.toCartElem) this.toCartElem.hidden = stock === "none";
   }
 
   destroy(): void {

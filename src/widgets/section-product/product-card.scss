@@ -273,6 +273,10 @@
     @media (max-width: $sm) {
       flex-grow: 1;
     }
+
+    &[hidden] {
+      display: none;
+    }
   }
 
   &__description {

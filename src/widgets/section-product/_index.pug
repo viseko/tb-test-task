@@ -111,6 +111,8 @@ mixin section-product(data = {})
               +btn({
                 className: "product-card__to-cart",
                 type: "button",
+                role: "to-cart",
+                attributes: { hidden: packagingItems[0].stock === "none" },
               })
                 +icon("cart", 20, 20)
                 span В корзину
@@ -127,7 +129,7 @@ mixin section-product(data = {})
                 href: "#",
                 noRipple: true,
               })
-                +icon("chat", 16, 16)
+                +icon("chat", 20, 20)
                 span Оставить отзыв
       aside.section-product__sidebar
         nav.product-sidebar

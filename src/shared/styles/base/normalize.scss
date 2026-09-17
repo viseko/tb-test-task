@@ -30,6 +30,7 @@ body {
   font-weight: var(--font-weight);
   line-height: var(--line-height);
   background-color: var(--cl-bg);
+  background-image: url("#{$img-path}/bg.png");
 }
 
 hr {
@@ -190,7 +191,6 @@ label {
 }
 
 a {
-  color: map-get($colors, primary);
   text-decoration: none;
 }
 

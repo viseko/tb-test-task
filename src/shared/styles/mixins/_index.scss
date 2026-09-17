@@ -1,0 +1,16 @@
+@function fluid(
+  $min,
+  $max,
+  $min-viewport: 576,
+  $max-viewport: 1280
+) {
+  @return clamp(
+    #{$min}px,
+    calc(
+      #{$min}px + (#{$max} - #{$min}) *
+      ((min(100vw, #{$max-viewport}px) - #{$min-viewport}px) /
+      (#{$max-viewport} - #{$min-viewport}))
+    ),
+    #{$max}px
+  );
+}

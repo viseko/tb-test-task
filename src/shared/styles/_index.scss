@@ -1,5 +1,7 @@
 @layer tokens, base, vendor, components, utils;
 
+@import "mixins";
+
 @layer tokens {
   @import "tokens";
   @import "animations";

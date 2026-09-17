@@ -1,17 +1,32 @@
 // CSS-переменные
 :root {
   // * контейнер
-  --container-width: 1280px; // Макс. ширина контейнера
+  --container-width: 1200px; // Макс. ширина контейнера
   --min-width: 320px; // Мин. ширина страницы
-  --container-padding: #{fluid(16, 80)}; // Отступы контейнера
+  --container-padding: #{fluid(15, 80)}; // Отступы контейнера
 
   // * текст - общее
-  --font-family: "Inter", helvetica, sans-serif;
+  --font-family: sans-serif;
   --font-weight: 400;
-  --font-size: #{fluid(16, 18)};
+  --font-size: 14px;
   --line-height: 150%;
 
   // * цвет фона/текста
-  --cl-text: #{map-get($colors, text)};
-  --cl-bg: #{map-get($colors, bg)}; // Фон. цвет страницы
+  --cl-text: #202020;
+  --cl-text-secondary: #444;
+  --cl-text-muted: #999;
+  --cl-bg: #fff; // Фон. цвет страницы
+  --cl-bg-ivory: #fefcef; // Айвори-фон (баннеры, мини-корзина)
+  --cl-bg-secondary: #f6f7f8;
+
+  // * акцент
+  --cl-accent: #f5d730; // Основной жёлтый акцент (кнопки, активные состояния)
+  --cl-accent-text: #202020; // Цвет текста на акцентном фоне
+
+  // * границы
+  --cl-border: #cbcbcb;
+  --cl-border-light: #f0f0f0;
+
+  // Скругления
+  --radius-sm: 4px;
 }

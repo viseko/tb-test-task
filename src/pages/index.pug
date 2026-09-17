@@ -20,7 +20,7 @@ html(lang="ru")
     //- * 1. Шрифты
     link(
       rel="preload",
-      href=`${PATH.fonts}/inter-variable.woff2`,
+      href=`${PATH.fonts}/OpenSans.woff2`,
       as="font",
       type="font/woff2",
       crossorigin
@@ -42,6 +42,7 @@ html(lang="ru")
     .page
       +page-header
       main.page__main
+        +section-product
 
     //- Скрипты
     if IS_DEV

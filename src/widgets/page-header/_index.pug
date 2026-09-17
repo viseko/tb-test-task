@@ -1,8 +1,27 @@
 mixin page-header(data = {})
-  .page-header(
+  header.page-header(
     id=data.id,
     class=data.className,
     class=(data.theme ? `page-header--theme--${data.theme}` : null),
     class=(data.size ? `page-header--size--${data.size}` : null),
     data-role=data.role
-  ) page-header
+  )
+    .page-header__top
+      .container.page-header__container
+        a.page-header__logo(href="/")
+          +img({
+            className: "page-header__logo-img",
+            src: "logo.png",
+            mobile: 0,
+            x2: false,
+            alt: "TeaBoom",
+            width: null,
+          })
+          .page-header__logo-text
+            strong Чайный Бум
+            span Интернет-магазин чая и&nbsp;посуды
+        .page-header__controls
+          a.page-header__btn(href="#", aria-label="Корзина")
+            +icon("cart", 24, 24)
+          a.page-header__btn(href="#", arial-label="Личный кабинет")
+            +icon("login", 24, 24)

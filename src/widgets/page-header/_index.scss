@@ -1,4 +1,111 @@
 .page-header {
-  padding: 8px;
-  border: 2px dashed red;
+  background-color: var(--cl-bg);
+  border-bottom: 1px solid #eee;
+
+  &__container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__top {
+    padding: 8px 0;
+    background-color: var(--cl-bg-ivory);
+    border-bottom: 1px solid #eee;
+  }
+
+  &__bottom {
+    padding: 24px 0;
+  }
+
+  &__logo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: inherit;
+
+    &-img {
+      width: 50px;
+      height: auto;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+
+      @media (max-width: $sm) {
+        display: none;
+      }
+
+      strong {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--cl-text);
+    background-color: var(--cl-bg);
+    border: 1px solid var(--cl-border);
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.1s;
+
+    &:hover {
+      background-color: var(--cl-accent);
+      border-color: var(--cl-accent);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &-link {
+      display: block;
+      padding: 12px;
+      color: var(--cl-text-secondary);
+      font-weight: 600;
+      white-space: nowrap;
+      transition: color 0.3s, transform 0.1s;
+      will-change: transform;
+
+      &:hover {
+        color: var(--cl-text);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  &__search {
+
+  }
 }

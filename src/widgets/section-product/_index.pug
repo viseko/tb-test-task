@@ -1,0 +1,42 @@
+mixin section-product(data = {})
+  //- Назавние компонента
+  //- className?: string = null
+  //- id?: string
+  //- theme?: string
+  //- size?: string
+  //- role?: string = null
+  section.section-product(
+    id=data.id,
+    class=data.className,
+    class=(data.theme ? `section-product--theme--${data.theme}` : null),
+    class=(data.size ? `section-product--size--${data.size}` : null),
+    data-role=data.role
+  )
+    .container.section-product__container
+      .section-product__main
+        block
+      aside.section-product__sidebar
+        nav.product-sidebar
+          header.product-sidebar__header Категории
+          ul.product-sidebar__list
+            -
+              var sidebarItems = [
+                "Подарки",
+                "Матча",
+                "Черный чай",
+                "Чай зелёный с&nbsp;черным ароматизированный",
+                "Зеленый чай",
+                "Красный чай",
+                "Белый чай",
+                "Желтый чай",
+                "Улун",
+                "Пуэр",
+              ];
+
+            each item in sidebarItems
+              li
+                a.product-sidebar__list-item
+                  span!= item
+                  +icon("chevron-right", 24, 24)
+          button.product-sidebar__more(type="button", aria-label="Показать еще")
+            +icon("ellipsis", 24, 24)

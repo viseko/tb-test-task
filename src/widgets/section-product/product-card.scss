@@ -162,11 +162,6 @@
       --color: var(--cl-error);
       --shadow: var(--cl-error-shadow);
     }
-
-    &._none {
-      --color: var(--cl-none);
-      --shadow: var(--cl-none-shadow);
-    }
   }
 
   &__packaging {
@@ -272,10 +267,6 @@
   &__to-cart {
     @media (max-width: $sm) {
       flex-grow: 1;
-    }
-
-    &[hidden] {
-      display: none;
     }
   }
 

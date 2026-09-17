@@ -10,16 +10,3 @@ mixin icon(icon, width, height, className)
     class=className
   )
     use(xlink:href=`${PATH.img}/sprite.svg?v=${TIMESTAMP}#${icon}`)
-
-mixin icon-alt(src, width, height, className)
-  //- Иконка без SVG-спрайта
-  //- src: string = ""
-  //- width: number
-  //- height: number
-  //- className?: string
-  svg(
-    width=width
-    height=height
-    class=className
-  )
-    use(xlink:href=`${PATH.img}/${src}#icon`)

@@ -5,6 +5,9 @@
   --min-width: 320px; // Мин. ширина страницы
   --container-padding: #{fluid(15, 80)}; // Отступы контейнера
 
+  // * лэйаут
+  --header-height: 67px; // Высота .page-header (см. page-header/_index.scss)
+
   // * текст - общее
   --font-family: sans-serif;
   --font-weight: 400;
@@ -24,13 +27,10 @@
   --cl-success-shadow: #{rgba(#22af10, 15%)};
   --cl-error: #d64545;
   --cl-error-shadow: #{rgba(#d64545, 15%)};
-  --cl-none: #999;
-  --cl-none-shadow: #{rgba(#999, 15%)};
   --cl-green-light: #e9f2c3;
 
   // * акцент
   --cl-accent: #f5d730; // Основной жёлтый акцент (кнопки, активные состояния)
-  --cl-accent-text: #202020; // Цвет текста на акцентном фоне
 
   // * границы
   --cl-border: #cbcbcb;
@@ -38,4 +38,8 @@
 
   // Скругления
   --radius-sm: 4px;
+
+  // Фокус
+  --focus-ring-width: 3px;
+  --focus-ring-color: var(--cl-green-light);
 }

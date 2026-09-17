@@ -15,10 +15,6 @@
     border-bottom: 1px solid #eee;
   }
 
-  &__bottom {
-    padding: 24px 0;
-  }
-
   &__logo {
     display: flex;
     gap: 8px;
@@ -81,34 +77,4 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    &-link {
-      display: block;
-      padding: 12px;
-      color: var(--cl-text-secondary);
-      font-weight: 600;
-      white-space: nowrap;
-      transition:
-        color 0.3s,
-        transform 0.1s;
-      will-change: transform;
-
-      &:hover {
-        color: var(--cl-text);
-      }
-
-      &:active {
-        transform: scale(0.95);
-      }
-    }
-  }
-
-  &__search {
-  }
 }

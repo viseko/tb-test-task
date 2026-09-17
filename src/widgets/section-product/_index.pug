@@ -35,14 +35,13 @@ mixin section-product(data = {})
           var stockLabels = {
             lot: "В наличии: Много",
             few: "В наличии: Мало",
-            none: "Нет в наличии",
           };
 
           var packagingItems = [
             { value: "100 г", vendor: "01306", price: 326.4, oldPrice: 349.2, stock: "lot" },
             { value: "500 г", vendor: "01307", price: 1432, oldPrice: 1646, stock: "lot" },
             { value: "1000 г", vendor: "01308", price: 2064, oldPrice: 2592, stock: "few" },
-            { value: "5000 г", vendor: "01309", price: 6320, oldPrice: 8710, stock: "none" },
+            { value: "5000 г", vendor: "01309", price: 6320, oldPrice: 8710, stock: "few" },
           ].map(function (item) {
             return {
               value: item.value,
@@ -111,8 +110,6 @@ mixin section-product(data = {})
               +btn({
                 className: "product-card__to-cart",
                 type: "button",
-                role: "to-cart",
-                attributes: { hidden: packagingItems[0].stock === "none" },
               })
                 +icon("cart", 20, 20)
                 span В корзину

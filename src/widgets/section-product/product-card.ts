@@ -10,7 +10,7 @@ export default class ProductCard {
   private readonly stockValueElem: HTMLElement | null;
 
   constructor(elem: HTMLElement) {
-    this.inputs = [...elem.querySelectorAll<HTMLInputElement>(".product-card__packaging-input")];
+    this.inputs = [...elem.querySelectorAll<HTMLInputElement>(".packaging-item__input")];
     this.priceElem = elem.querySelector<HTMLElement>("[data-role='price']");
     this.oldPriceElem = elem.querySelector<HTMLElement>("[data-role='old-price']");
     this.discountElem = elem.querySelector<HTMLElement>("[data-role='discount']");

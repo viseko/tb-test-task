@@ -1,0 +1,37 @@
+.packaging-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  padding: 12px 18px;
+  color: var(--cl-text);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--cl-bg-secondary);
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.25s,
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.15s;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--cl-green-light);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:has(input:checked) {
+    color: var(--cl-bg);
+    background-color: var(--cl-green);
+  }
+
+  &:has(input:focus-visible) {
+    outline: 1px solid var(--cl-green-light);
+    outline-offset: 1px;
+  }
+}

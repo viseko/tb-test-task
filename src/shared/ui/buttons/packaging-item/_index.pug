@@ -1,0 +1,39 @@
+mixin packaging-item(data = {})
+  //- Вариант фасовки товара
+  //- value: string — подпись варианта, напр. "100 г"
+  //- vendor: string — артикул
+  //- price: number
+  //- oldPrice?: number
+  //- stock?: "lot" | "few" = "lot"
+  //- checked?: boolean = false
+  //- name?: string = "packaging"
+  -
+    var STOCK_LABELS = { lot: "В наличии: Много", few: "В наличии: Мало" };
+
+    function formatPrice(num) {
+      var formatted = num % 1 === 0
+        ? num.toLocaleString("ru-RU")
+        : num.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return formatted + " ₽";
+    }
+
+    var stock = data.stock || "lot";
+    var price = formatPrice(data.price);
+    var oldPrice = data.oldPrice ? formatPrice(data.oldPrice) : null;
+    var discount = data.oldPrice
+      ? "-" + Math.round((1 - data.price / data.oldPrice) * 100) + "%"
+      : null;
+
+  label.packaging-item
+    input.packaging-item__input.visually-hidden(
+      type="radio",
+      name=data.name || "packaging",
+      checked=data.checked,
+      data-price=price,
+      data-old-price=oldPrice,
+      data-discount=discount,
+      data-vendor=data.vendor,
+      data-stock=stock,
+      data-stock-label=STOCK_LABELS[stock]
+    )
+    span.packaging-item__value= data.value

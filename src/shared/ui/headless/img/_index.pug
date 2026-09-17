@@ -1,0 +1,54 @@
+mixin _img(data, resolvedSrc, srcset = null)
+  img(
+    class=data.className,
+    class=(data.emerge && "emerge"),
+    src=resolvedSrc,
+    srcset=srcset,
+    alt=(data.alt ? data.alt.replace(/&nbsp;/g, " ") : ""),
+    width=data.width,
+    height=data.height,
+    loading=(data.lazy && "lazy")
+  )&attributes({
+  ...data.attributes,
+})
+
+mixin img(data = {})
+  //- Изображение
+  //- src: string = "@img/"
+  //- mobile: 0 | 1 | 2 = 0
+  //- x2: boolean = false
+  //- className?: string | null = null
+  //- emerge?: boolean = false
+  //- alt: string = ""
+  //- width?: number | null = null
+  //- height?: number | null = null
+  //- attributes?: object | null = null
+  //- lazy?: boolean = true
+  -
+    // строим srcset от уже резолвленного src (с PATH.img), а не от сырого data.src —
+    // иначе относительные пути в srcset остаются без базового URL и не резолвятся
+    var resolvedSrc = (/^http[s]/).test(data.src) ? data.src : `${PATH.img}/${data.src}`
+    var ext  = resolvedSrc.match(/(\.[a-z]+)$/i)[0]
+    var base = resolvedSrc.replace(/(\.[a-z]+)$/i, "")
+
+    // mobile srcset
+    var mobileSrcset = null
+    if (data.mobile === 1) {
+      // mobile:1 → только mobile + десктоп ретина (если x2)
+      mobileSrcset = `${base}_mobile${ext}`
+      if (data.x2) mobileSrcset += `, ${base}${ext} 2x`
+    } else if (data.mobile) {
+      // mobile:2 → mobile + mobile@2x (если x2)
+      mobileSrcset = `${base}_mobile${ext}`
+      if (data.x2) mobileSrcset += `, ${base}_mobile@2x${ext} 2x`
+    }
+
+    // desktop ретина
+    var x2Srcset = data.x2 ? `${base}@2x${ext} 2x` : null
+
+  if data.mobile
+    picture
+      source(media=data.media || "(max-width: 576px)", srcset=mobileSrcset)
+      +_img(data, resolvedSrc, data.x2 ? x2Srcset || mobileSrcset : null)
+  else
+    +_img(data, resolvedSrc, x2Srcset)

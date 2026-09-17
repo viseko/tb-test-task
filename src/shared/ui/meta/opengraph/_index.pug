@@ -1,0 +1,15 @@
+mixin opengraph
+  meta(property="og:type", content="website")
+  meta(property="og:title", content=title)
+  meta(property="og:description", content="Пример Open Graph описания")
+  meta(property="og:url", content="https://site-url.ru")
+  meta(property="og:image", content=`${PATH.img}/og-share/cover.jpg`)
+  meta(property="og:site_name", content=title)
+  meta(property="og:locale", content="ru_RU")
+  //- Pinterest
+  meta(name="pinterest", content="nopin", description="Sorry, you can\'t save from my website!")
+  //-  Twitter
+  meta(property="twitter:card", content="summary_large_image")
+  meta(property="twitter:image:src", content=`${PATH.img}/og-share/cover.jpg`)
+  //-  VK
+  meta(property="vk:image", content=`${PATH.img}/og-share/cover.jpg`)

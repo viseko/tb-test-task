@@ -1,0 +1,17 @@
+// CSS-переменные
+:root {
+  // * контейнер
+  --container-width: 1280px; // Макс. ширина контейнера
+  --min-width: 320px; // Мин. ширина страницы
+  --container-padding: #{fluid(16, 80)}; // Отступы контейнера
+
+  // * текст - общее
+  --font-family: "Inter", helvetica, sans-serif;
+  --font-weight: 400;
+  --font-size: #{fluid(16, 18)};
+  --line-height: 150%;
+
+  // * цвет фона/текста
+  --cl-text: #{map-get($colors, text)};
+  --cl-bg: #{map-get($colors, bg)}; // Фон. цвет страницы
+}

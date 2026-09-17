@@ -1,0 +1,50 @@
+include @/shared/ui/_index
+include @/widgets/_index
+
+doctype html
+
+html(lang="ru")
+  head
+    title= title
+
+    //- Мета-данные
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(
+      name="viewport",
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    )
+    meta(name="format-detection", content="telephone=no")
+
+    //- Предзагрузки
+    //- * 1. Шрифты
+    link(
+      rel="preload",
+      href=`${PATH.fonts}/inter-variable.woff2`,
+      as="font",
+      type="font/woff2",
+      crossorigin
+    )
+    //- * 2. Стили
+    if !IS_DEV
+      link(rel="preload", href=`${BASE_URL}/assets/css/main.min.css?v=${TIMESTAMP}`, as="style")
+
+    //- Стили
+    if IS_DEV
+      link(rel="stylesheet", href="/main.scss")
+    else
+      link(rel="stylesheet", href=`${BASE_URL}/assets/css/main.min.css?v=${TIMESTAMP}`)
+
+    //- Фавиконки и манифест
+    +favicons
+
+  body(class=bodyClass)
+    .page
+      +page-header
+      main.page__main
+
+    //- Скрипты
+    if IS_DEV
+      script(src="/main.ts", type="module")
+    else
+      script(src=`${BASE_URL}/assets/js/main.min.js?v=${TIMESTAMP}`)

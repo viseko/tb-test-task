@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+*.min.css
+*.min.js
+*.map
+public
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

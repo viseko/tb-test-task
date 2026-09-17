@@ -1,0 +1,19 @@
+@layer tokens, base, vendor, components, utils;
+
+@layer tokens {
+  @import "tokens";
+  @import "animations";
+}
+
+@layer base {
+  @import "base";
+  @import "layout";
+}
+
+@layer vendor {
+  @import "vendor";
+}
+
+@layer utils {
+  @import "utils";
+}

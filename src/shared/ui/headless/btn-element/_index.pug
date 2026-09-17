@@ -1,0 +1,47 @@
+mixin btn-element(data = {})
+  //- Headless-кнопка
+  //- baseClass: string = ""
+  //- className?: string
+  //- attributes?: object
+  //- blank?: boolean
+  //- title?: string
+  //- role?: string
+  //- Открытие модалки (см. ModalShell.ts) — modal: id, остальные data-modal-* необязательны
+  //- modal?: string
+  //- modalSize?: "md" | "lg" | "screen"
+  //- modalTitle?: string
+  //- modalSubtitle?: string
+  //- modalSrc?: string — DOM-источник ("#id") или URL для fetch
+  //- modalFields?: (string | { name: string, placeholder?: string })[] — порядок/состав полей
+  //- modalButton?: string
+  //- modalFooter?: string
+  //- modalFormPlacement?: string
+  - var tag = (data.type === "div" && "div") || (data.href && "a") || "button";
+  - var baseClass = data.baseClass;
+
+  #{tag}(
+    id=data.id,
+    class=data.className,
+    class=baseClass,
+    class=((data.theme && baseClass) ? `${baseClass}--theme--${data.theme}` : null),
+    class=((data.size && baseClass) ? `${baseClass}--size--${data.size}` : null),
+    data-role=data.role,
+    data-tooltip=data.tooltip,
+    title=data.title,
+    href=data.href,
+    target=(data.blank ? "_blank" : null),
+    rel=(data.blank ? "noopener noreferrer" : null),
+    type=(tag === "button" && (data.type || "button")),
+    disabled=data.disabled,
+    class=(data.modal && "js-show-modal"),
+    data-modal=data.modal,
+    data-modal-size=data.modalSize,
+    data-modal-title=data.modalTitle,
+    data-modal-subtitle=data.modalSubtitle,
+    data-modal-src=data.modalSrc,
+    data-modal-fields=(data.modalFields ? JSON.stringify(data.modalFields) : null),
+    data-modal-button=data.modalButton,
+    data-modal-footer=data.modalFooter,
+    data-modal-form-placement=data.modalFormPlacement
+  )&attributes(data.attributes)
+    block
